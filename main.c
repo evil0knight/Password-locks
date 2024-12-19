@@ -10,15 +10,15 @@ uchar seg_pos=0;
 uchar seg_code[8];
 uchar seg_char[9];
 uint uitms=0;
-uchar i=0;//ÃÜÂëËøÓÃ
-uchar mode=0;//0ÃÜÂëËøÄ£Ê½,1ĞŞ¸ÄÃÜÂëÄ£Ê½
+uchar i=0;//å¯†ç é”ç”¨
+uchar mode=0;//0å¯†ç é”æ¨¡å¼,1ä¿®æ”¹å¯†ç æ¨¡å¼
 uchar bufright[9]="12345678";
 uchar buftemp[4]={0};
 uint uiseg_Dly=0;
 uchar ucseg_Dly=0;
 uchar key_valu[3];
-void Seg_Proc();//ÊıÂë¹ÜÏÔÊ¾º¯Êı
-void Key_proc();//°´¼ü¼ì²âº¯Êı
+void Seg_Proc();//æ•°ç ç®¡æ˜¾ç¤ºå‡½æ•°
+void Key_proc();//æŒ‰é”®æ£€æµ‹å‡½æ•°
 //////////////////////////////////////////////////////////////////
 void panduan();
 void Delay1000ms();		//@12.000MHz
@@ -38,7 +38,7 @@ void T0_Proc()interrupt 3{
 	uiseg_Dly++;
 	ucseg_Dly++;
 }
-void Seg_Proc(){//ÊıÂë¹ÜÏÔÊ¾º¯Êı
+void Seg_Proc(){//æ•°ç ç®¡æ˜¾ç¤ºå‡½æ•°
 	if(uiseg_Dly>500){
 		uiseg_Dly=0;
 //		sprintf(seg_char,"1.%07u",(uint) num);
@@ -47,10 +47,10 @@ void Seg_Proc(){//ÊıÂë¹ÜÏÔÊ¾º¯Êı
 	if(ucseg_Dly>1){
 		ucseg_Dly=0;
 		seg_disp(seg_code[seg_pos],seg_pos);
-		seg_pos=++seg_pos&7;//ÊıÂë¹ÜÑ­»·ÏÔÊ¾
+		seg_pos=++seg_pos&7;//æ•°ç ç®¡å¾ªç¯æ˜¾ç¤º
 	}
 }
-void Key_proc(){//°´¼ü¼ì²âº¯Êı+¼üÖµ¿ØÖÆº¯Êı
+void Key_proc(){//æŒ‰é”®æ£€æµ‹å‡½æ•°+é”®å€¼æ§åˆ¶å‡½æ•°
 	if(uitms<10){
 		return;
 	}
